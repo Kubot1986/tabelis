@@ -27,10 +27,10 @@
                 </header>
             @endif
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+@yield('content')
         </div>
+        <script src="node_modules/flowbite/dist/flowbite.js"></script>
+
+
     </body>
 </html>
