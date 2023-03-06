@@ -35,18 +35,21 @@ class TimecardController extends Controller
     {
 
         $timecard = new Timecard();
-        if(Worker::where('id',$request->worker_id)->exists() && Site::where('id',$request->site_id)->exists() && Timecard::where('date',$request->date)->exists()){
-            return abort("404");
+        if(Worker::where('id',$request->worker_id)->exists() &&
+            Site::where('id',$request->site_id)->exists() &&
+            Timecard::where('date',$request->date)->exists() &&
+            Timecard::where('hours_worked',$request->hours_worked)->first()){
+            return back()->with('error', 'Timecard for this worker, object and day is already created');
         }
         if (Worker::where('id',$request->worker_id)->exists()){
             $timecard->worker_id = $request->worker_id;
-        } else{  return abort("404");
+        } else{  return back()->with('error', 'You can not create timecard because worker with this id does not exist');
 
         }
 
         if (Site::where('id',$request->site_id)->exists()){
             $timecard->site_id = $request->site_id;
-        } else {  return abort("404");
+        } else {  return back()->with('error', 'You can not create timecard because site with this id does not exist');
 
         }
         $timecard->date = $request->date;

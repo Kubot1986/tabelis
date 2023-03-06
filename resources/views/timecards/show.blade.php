@@ -12,10 +12,10 @@
                     #
                 </th>
                 <th scope="col" class="px-6 py-3 border-black border-2">
-                    Worker Id
+                    Full name [Worker Id]
                 </th>
                 <th scope="col" class="px-6 py-3 border-black border-2">
-                    Site Id
+                    Site name [Site Id]
                 </th>
                 <th scope="col" class="px-6 py-3 border-black border-2">
                     Date
@@ -35,10 +35,10 @@
                     {{$timecard->id}}
                 </th>
                 <td class="px-6 py-4 border-black border-2">
-                    {{$timecard->worker->full_name}}
+                    {{$timecard->worker->full_name}} [{{$timecard->worker_id}}]
                 </td>
                 <td class="px-6 py-4 border-black border-2">
-                    {{$timecard->site->site_name}}
+                    {{$timecard->site->site_name}} [{{$timecard->site_id}}]
                 </td>
                 <td class="px-6 py-4 border-black border-2">
                     {{$timecard->date}}

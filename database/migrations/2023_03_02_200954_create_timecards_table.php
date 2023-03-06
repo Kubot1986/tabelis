@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('timecards', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('worker_id');
-            $table->foreignId('site_id');
-            $table->date('date');
+            $table->foreignId('worker_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('site_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->date('date')->nullable();
             $table->integer('hours_worked')->nullable();
             $table->timestamps();
         });
